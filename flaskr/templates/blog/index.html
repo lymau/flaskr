@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+    <div class="row my-5">
+        <div class="col">
+            <h3 class="h3 text-center">Well logs apps</h3>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">
+                    Main Features
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <b>Smart Well Logs</b>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-center">Takes a well logs file in CSV and see our apps visualizes it
+                                        well!</p>
+                                    <div class="input-group mb-3">
+                                        <form class="form-control" method="POST">
+                                            <input type="file" accept=".csv" class="custom-file-input" id="csvfile">
+                                            <label class="custom-file-label" for="csvfile">Choose a CSV file</label>
+                                            <button type="submit" class="btn btn-block btn-primary">Visualize</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <b>Predict Facies by Depth</b>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-center">See what's inside below your well area surface!</p>
+                                    <a href="{{ url_for('blog.predict') }}" class="btn-block btn btn-warning">Predict!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

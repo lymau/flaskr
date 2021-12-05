@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %} Predict Facies by Depth {% endblock %}
+{% block content %}
+{#    header #}
+    <div class="row">
+        <div class="col">
+            <h3 class="h3 my-5 text-center">Predicting Facies by Depth</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h3 text-center">Input</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('blog.predict') }}" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="depth">Depth</label>
+                                <input type="number" name="depth" class="form-control" id="depth" placeholder="Depth" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="gr">GR</label>
+                                <input type="number" name="gr" class="form-control" id="gr" placeholder="GR" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="ild_log10">ILD_log10</label>
+                                <input type="number" name="ild_log10" class="form-control" id="ild_log10" placeholder="ILD_log10" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="deltaphi">DeltaPHI</label>
+                                <input type="number" name="deltaphi" class="form-control" id="deltaphi" placeholder="DeltaPHI" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="phind">PHIND</label>
+                                <input type="number" name="phind" class="form-control" id="phind" placeholder="PHIND" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="pe">PE</label>
+                                <input type="number" name="pe" class="form-control" id="pe" placeholder="PE" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nm_m">NM_M</label>
+                                <input type="number" name="nm_m" class="form-control" id="nm_m" placeholder="NM_M" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="relpos">RELPOS</label>
+                                <input type="number" name="relpos" class="form-control" id="relpos" placeholder="RELPOS" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h3 text-center">Output</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">{{ output }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
