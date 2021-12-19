@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} About {% endblock %}
+{% block content %}
+    <div class="row my-5">
+        <div class="col">
+            <h3 class="h3 text-center">About this App</h3>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">
+                                Latar Belakang
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-justify">
+                                Data well log merupakan data yang diperoleh dari sumur bor eksplorasi yang berupa data
+                                dari sifat petrofisika seperti gama , resistivitas, porositas dan lainnya. Analisis
+                                dengan menggunakan data well log ini sering digunakan dalam industry perminyakan atau
+                                pertambangan, untuk mengetahui lapisan atau facies dan strukturnya berdasarkan sifat
+                                petrofisika yang diamati. Namun pada umumnya Analisa data well log masih dilakukan
+                                secara manual sehingga kemungkinan membutuhkan waktu yang lama serta perlu banyak ahli
+                                yang melakukakannya.
+                            </p>
+                            <img src="{{ url_for('static', filename='well_latarbelakang.png') }}" alt="Well Logs"
+                                 class="img-responsive d-block mx-auto">
+                            <p class="text-justify">
+                                Berdasarkan latar belakang yang telah disampaikan, kami tergerak untuk membuap suatu
+                                aplikasi yang dapat mendeteksi fasies atau lapisan dari data well log yang telah
+                                diberikan, aplikasi ini nantinya akan menjadi suatu alat yang dapat digunakan oleh
+                                seorang geofisikawan dalam menganalisis data well log, dan harapanya dengan aplikasi ini
+                                analisis yang dilakukan menjadi lebih cepat , akurat dan murah.
+                            </p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">
+                                Tim Pengembang
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-justify">
+                                Dosen Pembimbing: Dr. Indra Gunawan, S.Kom., M.Si.
+                            </p>
+                            <p class="text-justify">
+                                Anggota Tim:
+                            <ul>
+                                <li>Andriana A</li>
+                                <li>Ibnu Nahwitama</li>
+                                <li>Muhammad Iqbal Khatami</li>
+                                <li>Nur Sabilly</li>
+                                <li>Wahana Alfin Shihab</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

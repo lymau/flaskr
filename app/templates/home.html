@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+    <div class="row my-5">
+        <div class="col">
+            <h3 class="h3 text-center">Well logs apps</h3>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="row">
+                    <div class="col">
+                        {% if category == 'error' %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Sorry,</strong> {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row my-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">
+                    Main Features
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <b>Smart Well Logs</b>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-center">Takes a well logs file in CSV and see our apps visualizes it
+                                        well!</p>
+                                    <div class="input-group mb-3">
+                                        <form class="form-control" method="POST" enctype=multipart/form-data>
+                                            <input type="file" accept=".csv" name="file" class="custom-file-input" id="file" required>
+                                            <label class="custom-file-label" for="file">Choose a CSV file</label>
+                                            <button type="submit" class="btn btn-block btn-primary">Visualize</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

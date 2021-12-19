@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %} Visualization Result {% endblock %}
+{% block content %}
+    <div class="row my-5">
+        <div class="col">
+            <h3 class="h3 text-center">Visualization Result</h3>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="row">
+                    <div class="col">
+                        {% if category == 'error' %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Sorry,</strong> {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row my-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="h4">Result</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">Logs Plot</h5>
+                        </div>
+                        <div class="body table text-center mx-0">
+                            <br/>
+                            {{ logs_img|safe }}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">Tabular Representation</h5>
+                        </div>
+                        <div class="body table text-center mx-0">
+                            <br/>
+                            {% for table in tables %}
+                                {{ table|safe }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">Statistical Description</h5>
+                        </div>
+                        <div class="body table text-center mx-0">
+                            <br/>
+                            {% for table in describe_tables %}
+                                {{ table|safe }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
