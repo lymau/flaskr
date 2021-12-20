@@ -3,14 +3,17 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from .models import Note
 from . import db
-from .helper import csv_df_to_html, make_facies_log_plot
+from .helper import csv_df_to_html, make_facies_log_plot, predict, combine_result
 import json
 import os
+from keras.models import load_model
+
 
 views = Blueprint('views', __name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'uploads')
 ALLOWED_EXTENSIONS = {'csv'}
+model = load_model(os.path.join(APP_ROOT, 'static/model.h5'))
 
 
 def allowed_file(filename):
@@ -51,9 +54,16 @@ def home():
             # visualize
             logs_img = make_facies_log_plot(file_path)
 
-            return render_template('visual.html', user=current_user, tables=[tables], describe_tables=[describe_tables], logs_img=logs_img)
+            # prediction
+            predict_cols = predict(file_path, model)
+            # combine result in one DataFrame
+            result_table = combine_result(file_path, predict_cols)
+            result_table = result_table.to_html()
+
+            return render_template('visual.html', user=current_user, tables=[tables], describe_tables=[describe_tables], logs_img=logs_img, predicted_table=[result_table])
 
     return render_template('home.html', user=current_user)
+
 
 @views.route('delete-note', methods=['POST'])
 def delete_note():

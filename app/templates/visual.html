@@ -71,6 +71,18 @@
                             {% endfor %}
                         </div>
                     </div>
+                <br/>
+                <div class="card">
+                        <div class="card-header">
+                            <h5 class="h5 text-center">Prediction</h5>
+                        </div>
+                        <div class="body table text-center mx-0">
+                            <br/>
+                            {% for table in predicted_table %}
+                                {{ table|safe }}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
